@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: rgb(116, 197, 255);
+}
+
+h1 {
+  color: gold;
+  background-color: transparent;
+  text-align: center;
+}
+
+h2 {
+  color: black;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.table {
+  margin: 1rem auto;
+  border-collapse: collapse;
+  border-spacing: 10;
+  background-color: black;
+}
+.td {
+    background-color: black;
+    height:100px;
+    width: 400PX;
+    border: 50px solid black;
+    text-align: center;
+    font-size: 100px;
+}

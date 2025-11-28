@@ -17,17 +17,38 @@ h2 {
   border-radius: 8px;
 }
 
-.table {
+#table {
   margin: 1rem auto;
   border-collapse: collapse;
   border-spacing: 10;
-  background-color: black;
+  background-color: transparent;
 }
-.td {
-    background-color: black;
-    height:100px;
-    width: 400PX;
-    border: 50px solid black;
-    text-align: center;
-    font-size: 100px;
+
+.a {
+  border: none;             
+  padding: 100px 200px;      
+  border-radius: 8px;        
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.a1 {
+  border: none;             
+  padding: 15px 30px;      
+  border-radius: 8px;        
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button {
+  background-color: transparent;
+  color: white;           
+  border: none;             
+  padding: 100px 200px;      
+  border-radius: 8px;        
+  font-size: 50px;
+  cursor: pointer;
+  text-align: center;
 }

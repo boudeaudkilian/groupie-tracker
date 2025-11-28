@@ -13,25 +13,24 @@ func gettoken(buffer, arg string) string {
 	isgoodword := 0
 
 	for _, v := range buffer {
-		if v == '"' {
-			isword = (isword + 1) % 2
-			box = ""
-			if isgoodword == 1 {
+		if isgoodword == 1 {
+			if v == ',' || v == '['{
 				break
 			}
-			if isgoodword > 1 {
-				isgoodword -= 1
-			}
-		} else if isword == 1 {
-			if isgoodword == 1 {
+			if v != '"' {
 				ret += string(v)
-			} else {
-				box += string(v)
-				if box == arg {//&& buffer[i + 1] == '"' {
-					isgoodword = 3
-				}
 			}
-		} 
+		} else if isgoodword == 2 && v == ':' {
+			isgoodword = 1
+		} else if v == '"' {
+			isword = (isword + 1) % 2
+			box = ""
+		} else if isword == 1 {
+			box += string(v)
+			if box == arg {
+				isgoodword = 2
+			}
+		}
 	}
 	return ret
 }
@@ -39,13 +38,13 @@ func gettoken(buffer, arg string) string {
 func main() {
 	url := "https://groupietrackers.herokuapp.com/api/artists"
 
-	req, _ := http.NewRequest("GET", url + "/1", nil)
+	req, _ := http.NewRequest("GET", url+"/1", nil)
 	res, _ := http.DefaultClient.Do(req)
 	defer res.Body.Close()
 
 	body, _ := io.ReadAll(res.Body)
 
-	img := gettoken(string(body), "locations")
+	tok := gettoken(string(body), "name")
 
-	fmt.Println(img)
+	fmt.Println(tok)
 }

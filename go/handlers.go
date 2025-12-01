@@ -6,10 +6,11 @@ import (
     "log"
 )
 
-// LoadGroup returns group data for templates; replace implementation with your real lookup.
-func LoadGroup(id int) interface{} {
-    // TODO: lookup and return the real group by id
-    return nil
+func LoadGroup(args ...interface{}) interface{} {
+    if len(args) == 0 {
+        return nil
+    }
+    return args[0]
 }
 
 func gameHandler(w http.ResponseWriter, r *http.Request) {

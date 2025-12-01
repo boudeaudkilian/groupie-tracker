@@ -1,56 +1,30 @@
 package groupie
 
 import (
-	"html/template"
-	"net/http"
+    "html/template"
+    "net/http"
+    "log"
 )
 
-var game *Game
-
-//Page accueil
-func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	switch r.Method {
-	case http.MethodGet:
-		template, err := template.ParseFiles("static/start.html")
-		if err != nil {
-			http.Error(w, "Erreur template : "+err.Error(), 500)
-			return
-		}
-		template.Execute(w, nil)
-	case http.MethodPost:
-		p1 := r.FormValue("p1")
-		p2 := r.FormValue("p2")
-		if p1 == "" {
-			p1 = "Joueur 1"
-		}
-		if p2 == "" {
-			p2 = "Joueur 2"
-		}
-		game = InitGame(p1, p2)
-		http.Redirect(w, r, "/game", http.StatusSeeOther)
-	}
+// LoadGroup returns group data for templates; replace implementation with your real lookup.
+func LoadGroup(id int) interface{} {
+    // TODO: lookup and return the real group by id
+    return nil
 }
 
-// Page du jeu
-func GameHandler(w http.ResponseWriter, r *http.Request) {
-	if game == nil {
-		http.Redirect(w, r, "/", http.StatusSeeOther)
-		return
-	}
+func gameHandler(w http.ResponseWriter, r *http.Request) {
 
-	t, _ := template.ParseFiles("static/index.html")
-	data := struct {
-		Rows   [][]string
-		Player string
-		Winner string
-		P1Name string
-		P2Name string
-	}{
-		Rows:   rows,
-		Player: game.Player,
-		Winner: game.Winner,
-		P1Name: game.P1Name,
-		P2Name: game.P2Name,
-	}
-	t.Execute(w, data)
+    funcMap := template.FuncMap{
+        "LoadGroup": LoadGroup, // tu rends ta fonction Go utilisable dans le HTML
+    }
+
+    tmpl := template.Must(
+        template.New("power4.html").Funcs(funcMap).
+            ParseFiles("template/power4.html"),
+    )
+
+    // g = ta structure globale ou l’état du jeu
+    if err := tmpl.Execute(w, g); err != nil {
+        log.Println("❌ Erreur template:", err)
+    }
 }

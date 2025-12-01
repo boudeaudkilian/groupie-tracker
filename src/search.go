@@ -1,0 +1,62 @@
+package groupie
+
+func lowcase(txt string) string {
+	ret := ""
+
+	for _, v := range txt {
+		if v >= 'A' && v <= 'Z' {
+			v += 'a' - 'A'
+		}
+		ret += string(v)
+	}
+	return ret
+}
+
+func ispart(groupname, txt string) bool {
+	cmp := 0
+	groupname = lowcase(groupname)
+	txt = lowcase(txt)
+
+	for i := 0; i < len(groupname) - (len(txt) - 1); i++ {
+		for j := 0; j < len(txt); j++ {
+			if groupname[i + j] == txt[j] {
+				cmp++
+			} else {
+				break
+			}
+		}
+		if cmp == len(txt) {
+			return true
+		}
+		cmp = 0
+	}
+	return false
+}
+
+func Search(txt string, stru Data) *Data{
+	var newstru Data
+
+	for i := 0; i < stru.nbGroup ; i++ {
+		if ispart(stru.listGroup[i].name, txt) {
+			newstru.listGroup = append(newstru.listGroup, stru.listGroup[i])
+			newstru.nbGroup++
+		}
+	}
+
+	return &newstru
+}
+
+// func test(groupname, txt string) {
+// 	if ispart(groupname, txt) {
+// 		fmt.Println("1")
+// 	} else {
+// 		fmt.Println("0")
+// 	}
+// }
+// func Maintest(){
+// 	test("oui", "ou")
+// 	test("non", "ou")
+// 	test("oui", "ouii")
+// 	test("oui", "ui")
+// 	test("oui", "U")
+// }

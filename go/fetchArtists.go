@@ -1,5 +1,4 @@
-
-package main
+package groupie
 
 import (
     "encoding/json"

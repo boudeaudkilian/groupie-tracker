@@ -8,7 +8,7 @@ import (
 
 func main() {
 	//  Association des routes avec leurs fonctions
-	http.HandleFunc("/", accueilHandler)
+	http.HandleFunc("/handler", accueilHandler)
 
 	//  Servir les fichiers statiques (CSS, images, JS)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))

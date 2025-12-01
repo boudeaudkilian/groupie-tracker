@@ -3,7 +3,6 @@ package groupie
 import (
 	"html/template"
 	"net/http"
-	"strconv"
 )
 
 var game *Game

@@ -1,10 +1,9 @@
 package main
 
 import (
-	"html/template"
 	"log"
 	"net/http"
-	//"groupie"
+	"groupie"
 )
 
 func main() {
@@ -16,9 +15,4 @@ func main() {
 
 	log.Println(" Bonjour et bienvenus sur notre serveur Groupie Tracker il est lancé sur http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
-}
-
-func accueilHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("template/accueil.html"))
-	tmpl.Execute(w, nil)
 }

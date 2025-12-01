@@ -18,8 +18,8 @@ func gameHandler(w http.ResponseWriter, r *http.Request) {
     }
 
     tmpl := template.Must(
-        template.New("power4.html").Funcs(funcMap).
-            ParseFiles("template/power4.html"),
+        template.New("accueil.html").Funcs(funcMap).
+            ParseFiles("template/accueil.html"),
     )
 
     // g = ta structure globale ou l’état du jeu

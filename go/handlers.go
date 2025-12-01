@@ -1,17 +1,9 @@
 package groupie
 
 import (
-    "html/template"
-    "net/http"
-    "log"
-)
-
-func LoadGroup(args ...interface{}) interface{} {
-    if len(args) == 0 {
-        return nil
-    }
-    return args[0]
-}
+	"html/template"
+	"net/http"
+	)
 
 func gameHandler(w http.ResponseWriter, r *http.Request) {
 

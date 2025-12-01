@@ -3,7 +3,13 @@ package groupie
 import (
 	"html/template"
 	"net/http"
+	"log"
 	)
+
+		
+	func LoadGroup(id int) interface{} {
+    return nil
+}
 
 func gameHandler(w http.ResponseWriter, r *http.Request) {
 

@@ -8,5 +8,11 @@
 </head>
     <body>
         <h1>Groupe {{.GrpName}}</h1>
+        <p>Liste des membres du groupe :</p>
+        <ul>
+            {{range .Members}}
+                <li>{{.}}</li>
+            {{end}}
+        </ul>
     </body>
 </html>

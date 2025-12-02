@@ -1,7 +1,7 @@
 package main
 
 import (
-	"groupie"
+	"groupie/src"
 	"log"
 	"net/http"
 )

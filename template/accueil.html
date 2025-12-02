@@ -9,23 +9,35 @@
     <h1>Page d'accueil</h1>
     <h2>De quel groupe voulez vous avoir des information</h2>
     <form action="/src/struct.go" method="POST"></form>
-    {{range .ListGroup}}
       <table id="table">
+        {{ $index := 0 }}
+            {{range .ListGroup}}
               <tr>
                   <td>
-                    <a class="a" href= "{{.Image}}" target="_blank" rel="noopener">
-                  <img src= "{{.Image}}" alt="image non charger" style="max-width:1000px; height:auto;">
-                    </a>
+                    {{if eq (mod $index 3) 0}}
+                      <a class="a" href= "{{.Image}}" target="_blank" rel="noopener">
+                    <img src= "{{.Image}}" alt="image non charger de {{.Name}}">
+                      </a>
+                      {{ $index = 1 }}
+                    {{end}}
                   <td>
-                    <a class="a1"> </a>
+                    {{if eq (mod $index 3) 1}}
+                      <a class="a" href= "{{.Image}}" target="_blank" rel="noopener">
+                    <img src= "{{.Image}}" alt="image non charger de {{.Name}}">
+                      </a>
+                      {{ $index = 2 }}
+                    {{end}}
                   </td>
                   <td>
-                    <button class="button" type="submit" name="col" value="0"> 
-                      {{.Name}}
-                    </button>
+                    {{if eq (mod $index 3) 2}}
+                      <a class="a" href= "{{.Image}}" target="_blank" rel="noopener">
+                    <img src= "{{.Image}}" alt="image non charger de {{.Name}}">
+                      </a>
+                      {{ $index = 0 }}
+                    {{end}}
                   </td>  
               </tr>
+            {{end}}
       </table>
-      {{end}}
     </form>
   </body>

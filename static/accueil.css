@@ -18,37 +18,29 @@ h2 {
 }
 
 #table {
-  margin: 1rem auto;
   border-collapse: collapse;
   border-spacing: 10;
   background-color: transparent;
+  display: flex;
+  justify-content: center;
 }
 
 .a {
-  border: none;             
-  padding: 100px 200px;      
-  border-radius: 8px;        
-  font-size: 16px;
+  border: none;                     
+  font-size: 10px;
   cursor: pointer;
   text-align: center;
+  display: flex;
 }
-
-.a1 {
-  border: none;             
-  padding: 15px 30px;      
-  border-radius: 8px;        
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-}
-
+/*
 .button {
   background-color: transparent;
   color: white;           
   border: none;             
-  padding: 100px 200px;      
+  padding: 40px 40px;      
   border-radius: 8px;        
-  font-size: 50px;
+  font-size: 8px;
   cursor: pointer;
   text-align: center;
 }
+*/

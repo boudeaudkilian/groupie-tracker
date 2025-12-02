@@ -99,8 +99,8 @@ func LoadGroupResum() *Data {
 }
 
 // func PrintListName(data Data) {
-// 	for i := 0; i < data.nbGroup; i++ {
-// 		fmt.Println(data.listGroup[i].name)
+// 	for i := 0; i < data.NbGroup; i++ {
+// 		fmt.Println(data.ListGroup[i].Name)
 // 	}
 // 	fmt.Printf("\n")
 // }

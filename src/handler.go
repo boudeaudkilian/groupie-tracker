@@ -13,6 +13,10 @@ func AccueilHandler(w http.ResponseWriter, r *http.Request) {
 
     tmpl := template.Must(
         template.New("accueil.html").Funcs(funcMap).
+            Funcs(template.FuncMap{
+                "mod": func(i, j int) int { return i % j },
+                "add1": func(i int) int { return i + 1 },
+            }).
             ParseFiles("template/accueil.html"),
     )
     data := LoadGroupResum()

@@ -36,10 +36,10 @@ func ispart(groupname, txt string) bool {
 func Search(txt string, stru Data) *Data{
 	var newstru Data
 
-	for i := 0; i < stru.nbGroup ; i++ {
-		if ispart(stru.listGroup[i].name, txt) {
-			newstru.listGroup = append(newstru.listGroup, stru.listGroup[i])
-			newstru.nbGroup++
+	for i := 0; i < stru.NbGroup ; i++ {
+		if ispart(stru.ListGroup[i].Name, txt) {
+			newstru.ListGroup = append(newstru.ListGroup, stru.ListGroup[i])
+			newstru.NbGroup++
 		}
 	}
 

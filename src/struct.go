@@ -6,21 +6,21 @@ import (
 )
 
 type Groupe struct {
-	id           string
-	name         string
-	image        string
-	members      []string
-	creationDate string
-	firstAlbum   string
-	locations    string
-	concertDates string
-	relations    string
-	isload       int
+	Id           string
+	Name         string
+	Image        string
+	Members      []string
+	CreationDate string
+	FirstAlbum   string
+	Locations    string
+	ConcertDates string
+	Relations    string
+	Isload       int
 }
 
 type Data struct {
-	nbGroup   int
-	listGroup []Groupe
+	NbGroup   int
+	ListGroup []Groupe
 }
 
 var (
@@ -56,25 +56,25 @@ func LoadGroup(ids int) *Groupe {
 	defer res.Body.Close()
 	body, _ := io.ReadAll(res.Body)
 
-	Group1.id = GetToken(string(body), "id")
-	if Group1.id != id {
+	Group1.Id = GetToken(string(body), "id")
+	if Group1.Id != id {
 		return nil
 	}
-	Group1.image = GetToken(string(body), "image")
-	Group1.name = GetToken(string(body), "name")
-	Group1.members = GetMultiToken(string(body), "members")
-	Group1.creationDate = GetToken(string(body), "creationDate")
-	Group1.firstAlbum = GetToken(string(body), "firstAlbum")
-	Group1.locations = GetToken(string(body), "locations")
-	Group1.concertDates = GetToken(string(body), "concertDates")
-	Group1.relations = GetToken(string(body), "relations")
-	Group1.isload = 1
+	Group1.Image = GetToken(string(body), "image")
+	Group1.Name = GetToken(string(body), "name")
+	Group1.Members = GetMultiToken(string(body), "members")
+	Group1.CreationDate = GetToken(string(body), "creationDate")
+	Group1.FirstAlbum = GetToken(string(body), "firstAlbum")
+	Group1.Locations = GetToken(string(body), "locations")
+	Group1.ConcertDates = GetToken(string(body), "concertDates")
+	Group1.Relations = GetToken(string(body), "relations")
+	Group1.Isload = 1
 	return &Group1
 }
 
 func LoadGroupResum() *Data {
 	var data Data
-	data.nbGroup = 0
+	data.NbGroup = 0
 
 	for i := 1; ; i++ {
 		var group Groupe
@@ -86,21 +86,21 @@ func LoadGroupResum() *Data {
 		}
 		defer res.Body.Close()
 		body, _ := io.ReadAll(res.Body)
-		group.id = GetToken(string(body), "id")
-		if group.id != id {
+		group.Id = GetToken(string(body), "id")
+		if group.Id != id {
 			break
 		}
-		group.image = GetToken(string(body), "image")
-		group.name = GetToken(string(body), "name")
-		data.listGroup = append(data.listGroup, group)
-		data.nbGroup++
+		group.Image = GetToken(string(body), "image")
+		group.Name = GetToken(string(body), "name")
+		data.ListGroup = append(data.ListGroup, group)
+		data.NbGroup++
 	}
 	return &data
 }
 
 // func PrintListName(data Data) {
-// 	for i := 0; i < data.nbGroup; i++ {
-// 		fmt.Println(data.listGroup[i].name)
+// 	for i := 0; i < data.NbGroup; i++ {
+// 		fmt.Println(data.ListGroup[i].Name)
 // 	}
 // 	fmt.Printf("\n")
 // }

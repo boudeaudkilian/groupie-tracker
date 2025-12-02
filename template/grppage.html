@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/grppage.css">
+    <title>Groupie Tracker - {{.Name}}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/"><img src="/static/img/logo.png" alt="Groupie Tracker Logo" class="logo"></a>
+            <ul class="nav-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/about">À propos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="group-info">
+            <h1>{{.Name}}</h1>
+            <img src="{{.Image}}" alt="{{.Name}} Image" class="group-image">
+            <p><strong>Genre:</strong> {{.Genre}}</p>
+            <p><strong>Année de formation:</strong> {{.FormationYear}}</p>
+            <p><strong>Albums:</strong></p>
+            <ul>
+                {{range .Albums}}
+                <li>{{.}}</li>
+                {{end}}
+            </ul>
+            <p><strong>Membres:</strong></p>
+            <ul>
+                {{range .Members}}
+                <li>{{.}}</li>
+                {{end}}
+            </ul>
+            <p><strong>Dates de tournée:</strong></p>
+            <ul>
+                {{range .TourDates}}
+                <li>{{.}}</li>
+                {{end}}
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Groupie Tracker. Tous droits réservés.</p>
+    </footer>
+</body>

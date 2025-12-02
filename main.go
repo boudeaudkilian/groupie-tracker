@@ -13,6 +13,7 @@ func AccueilHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", groupie.AccueilHandler)
+	http.HandleFunc("/grppage/", groupie.PageGroupHandler)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	log.Println(" Bonjour et bienvenus sur notre serveur Groupie Tracker il est lancé sur http://localhost:8080")

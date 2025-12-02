@@ -15,6 +15,23 @@ func AccueilHandler(w http.ResponseWriter, r *http.Request) {
         template.New("accueil.html").Funcs(funcMap).
             ParseFiles("template/accueil.html"),
     )
+
+    data := LoadGroupResum()
+    if err := tmpl.Execute(w, data); err != nil {
+        log.Println("❌ Erreur template:", err)
+    }
+}
+
+func PageGroupHandler(w http.ResponseWriter, r *http.Request) {
+    funcMap := template.FuncMap{
+        "LoadGroup": LoadGroup,
+    }
+
+    tmpl := template.Must(
+        template.New("grppage.html").Funcs(funcMap).
+            ParseFiles("template/grppage.html"),
+    )
+
     data := LoadGroupResum()
     if err := tmpl.Execute(w, data); err != nil {
         log.Println("❌ Erreur template:", err)

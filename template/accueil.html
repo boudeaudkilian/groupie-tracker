@@ -10,34 +10,32 @@
     <h2>De quel groupe voulez vous avoir des information</h2>
     <form action="/src/struct.go" method="POST"></form>
       <table id="table">
-        {{ $index := 0 }}
-            {{range .ListGroup}}
+        {{range $i, $g := .ListGroup}}
+            {{if eq (mod $i 5) 0}}
               <tr>
-                  <td>
-                    {{if eq (mod $index 3) 0}}
-                      <a class="a" href= "{{.Image}}" target="_blank" rel="noopener">
-                    <img src= "{{.Image}}" alt="image non charger de {{.Name}}">
-                      </a>
-                      {{ $index = 1 }}
-                    {{end}}
-                  <td>
-                    {{if eq (mod $index 3) 1}}
-                      <a class="a" href= "{{.Image}}" target="_blank" rel="noopener">
-                    <img src= "{{.Image}}" alt="image non charger de {{.Name}}">
-                      </a>
-                      {{ $index = 2 }}
-                    {{end}}
-                  </td>
-                  <td>
-                    {{if eq (mod $index 3) 2}}
-                      <a class="a" href= "{{.Image}}" target="_blank" rel="noopener">
-                    <img src= "{{.Image}}" alt="image non charger de {{.Name}}">
-                      </a>
-                      {{ $index = 0 }}
-                    {{end}}
-                  </td>  
-              </tr>
             {{end}}
+
+            <td>
+              <table id="table">
+                <tr>
+                  <a class="a" href="{{$g.Image}}" target="_blank" rel="noopener">
+                    <img src="{{$g.Image}}" alt="image non chargée de {{$g.Name}}">
+                  </a>
+                </tr>
+                <tr>
+                  <button class="button"> {{$g.Name}} </button>
+                </tr>
+              </table>
+            </td>
+
+            {{if eq (mod $i 5) 4}}
+                </tr>
+            {{end}}
+        {{end}}
+
+        {{if ne (mod (len .ListGroup) 5) 0}}
+            </tr>
+        {{end}}
       </table>
     </form>
   </body>

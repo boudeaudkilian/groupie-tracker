@@ -19,28 +19,11 @@
         <section class="group-info">
             <h1>{{.Name}}</h1>
             <img src="{{.Image}}" alt="{{.Name}} Image" class="group-image">
-            <p><strong>Genre:</strong> {{.Genre}}</p>
-            <p><strong>Albums:</strong></p>
-            <ul>
-                {{range .Albums}}
-                <li>{{.}}</li>
-                {{end}}
-            </ul>
-            <p><strong>Membres:</strong></p>
-            <ul>
-                {{range .Members}}
-                <li>{{.}}</li>
-                {{end}}
-            </ul>
-            <p><strong>Dates de tournée:</strong></p>
-            <ul>
-                {{range .TourDates}}
-                <li>{{.}}</li>
-                {{end}}
-            </ul>
+            <p><strong>Groupe:</strong> {{.Groupe}}</p>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 Groupie Tracker. Tous droits réservés.</p>
     </footer>
 </body>
+</html>

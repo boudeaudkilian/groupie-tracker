@@ -1,7 +1,10 @@
 .search {
     --padding: 14px;
 
-    width: max-content;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     padding: var(--padding);

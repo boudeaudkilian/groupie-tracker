@@ -18,37 +18,28 @@ h2 {
 }
 
 #table {
-  margin: 1rem auto;
   border-collapse: collapse;
-  border-spacing: 10;
+  border-spacing: 20;
   background-color: transparent;
+  display: flex;
+  justify-content: center;
 }
 
 .a {
-  border: none;             
-  padding: 100px 200px;      
-  border-radius: 8px;        
-  font-size: 16px;
+  border: none;                     
+  font-size: 10px;
   cursor: pointer;
   text-align: center;
+  display: flex;
 }
-
-.a1 {
-  border: none;             
-  padding: 15px 30px;      
-  border-radius: 8px;        
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-}
-
 .button {
-  background-color: transparent;
-  color: white;           
+  background-color: rgb(112, 187, 241);
+  color: black;           
   border: none;             
-  padding: 100px 200px;      
-  border-radius: 8px;        
-  font-size: 50px;
+  width: 240px;
+  height: 120px;      
+  border-radius: 120px;        
+  font-size: 15px;
   cursor: pointer;
   text-align: center;
 }

@@ -9,23 +9,33 @@
     <h1>Page d'accueil</h1>
     <h2>De quel groupe voulez vous avoir des information</h2>
     <form action="/src/struct.go" method="POST"></form>
-    {{range .ListGroup}}
       <table id="table">
+        {{range $i, $g := .ListGroup}}
+            {{if eq (mod $i 5) 0}}
               <tr>
-                  <td>
-                    <a class="a" href= "{{.Image}}" target="_blank" rel="noopener">
-                  <img src= "{{.Image}}" alt="image non charger" style="max-width:1000px; height:auto;">
-                    </a>
-                  <td>
-                    <a class="a1"> </a>
-                  </td>
-                  <td>
-                    <button class="button" type="submit" name="col" value="0"> 
-                      {{.Name}}
-                    </button>
-                  </td>  
-              </tr>
+            {{end}}
+
+            <td>
+              <table id="table">
+                <tr>
+                  <a class="a" href="{{$g.Image}}" target="_blank" rel="noopener">
+                    <img src="{{$g.Image}}" alt="image non chargée de {{$g.Name}}">
+                  </a>
+                </tr>
+                <tr>
+                  <button class="button"> {{$g.Name}} </button>
+                </tr>
+              </table>
+            </td>
+
+            {{if eq (mod $i 5) 4}}
+                </tr>
+            {{end}}
+        {{end}}
+
+        {{if ne (mod (len .ListGroup) 5) 0}}
+            </tr>
+        {{end}}
       </table>
-      {{end}}
     </form>
   </body>

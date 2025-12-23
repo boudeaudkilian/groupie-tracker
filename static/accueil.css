@@ -43,3 +43,21 @@ h2 {
   cursor: pointer;
   text-align: center;
 }
+button:hover {
+  background-color: rgba(5, 144, 243, 0.621);
+  transform: scale(1.1);
+}
+
+.button1{
+  background-color: whitesmoke;
+  color: black;           
+  border: none;             
+  width: 240px;
+  height: 60px;      
+  border-radius: 120px;        
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}

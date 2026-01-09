@@ -9,7 +9,7 @@
     <h1>Page d'accueil</h1>
     <h2>De quel groupe voulez vous avoir des information</h2>
     <form action="/src/struct.go" method="POST"></form>
-      <button class="button1">recherche</button>
+    <button class="button1">recherche</button>
       <table id="table">
         {{range $i, $g := .ListGroup}}
             {{if eq (mod $i 5) 0}}

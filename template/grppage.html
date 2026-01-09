@@ -1,25 +1,41 @@
-<!DOCTYPE html>
-<html lang="fr"></html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/static/grppage.css">
-    <title>Groupie Tracker - {{.Name}}</title>
-</head>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Groupie Tracker - Page de Groupe</title>
+    <link rel="stylesheet" href="static/grppage.css" />
+  </head>
 <body>
-    <header>
-        <nav>
-            <a href="/"><img src="/static/img/logo.png" alt="Groupie Tracker Logo" class="logo"></a>
-            <ul class="nav-links">
-                <li><a href="/about">À propos</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="group-info">
-            <h1>{{.Name}}</h1>
-            <img src="{{.Image}}" alt="{{.Name}} Image" class="group-image">
-            <p><strong>Groupe:</strong> {{.Groupe}}</p>
-        </section>
-    </main>
+    <h1>{{.Name}}</h1>
+    <form action="/src/struct.go" method="POST"></form>
+        <table id="table">
+            <tr>
+            <td>
+                <a class="a" href="{{.Image}}" target="_blank" rel="noopener">
+                <img src="{{.Image}}" alt="image non chargée de {{.Name}}">
+                </a>
+            </td>
+            <td>
+                <h2>Membres :</h2>
+                    <ul>
+                    {{range .Members}}
+                        <li>{{.}}</li>
+                    {{end}}
+                    </ul>
+                <h3>Année de formation :</h3>
+                    <p>{{.FormationYear}}</p>
+                <h4>Genre :</h4>
+                    <p>{{.Genre}}</p>
+                <h5>Albums :</h5>
+                    <ul>
+                    {{range .Albums}}
+                        <li>{{.}}</li>
+                    {{end}}
+                    </ul>
+            </td>
+            </tr>
+        </table>
+        <a href="/src/struct.go" class="button">Retour à l'accueil</a>
+    </form>
 </body>
 </html>

@@ -98,6 +98,21 @@ func LoadGroupResum() *Data {
 	return &data
 }
 
+func LoadAll() *Data {
+	var data Data
+	data.NbGroup = 0
+
+	for i := 1; i < 999; i++ {
+		groupe := LoadGroup(i)
+		if groupe == nil {
+			break
+		}
+		data.ListGroup = append(data.ListGroup, *groupe)
+		data.NbGroup++
+	}
+	return &data
+}
+
 // func PrintListName(data Data) {
 // 	for i := 0; i < data.NbGroup; i++ {
 // 		fmt.Println(data.ListGroup[i].Name)

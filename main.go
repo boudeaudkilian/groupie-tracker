@@ -8,6 +8,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", groupie.AccueilHandler)
+	http.HandleFunc("/search", groupie.SearchHandler)
 	http.HandleFunc("/group", groupie.PageGroupHandler)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 

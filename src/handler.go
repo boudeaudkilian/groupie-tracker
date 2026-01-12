@@ -54,3 +54,13 @@ func PageGroupHandler(w http.ResponseWriter, r *http.Request) {
 		log.Println("❌ Erreur template:", err)
 	}
 }
+
+func SearchHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl := template.Must(
+		template.New("searchbar.html").ParseFiles("template/searchbar.html"),
+	)
+
+	if err := tmpl.Execute(w, nil); err != nil {
+		log.Println("❌ Erreur template searchbar:", err)
+	}
+}

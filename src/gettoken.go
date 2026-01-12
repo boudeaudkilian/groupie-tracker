@@ -63,7 +63,7 @@ func GetMultiToken(buffer, arg string) []string {
 }
 
 //test main for fct
-// func main() {
+// func Maintest() {
 // 	url := "https://groupietrackers.herokuapp.com/api/artists"
 
 // 	req, _ := http.NewRequest("GET", url+"/1", nil)

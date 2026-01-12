@@ -3,39 +3,32 @@
   <head>
     <meta charset="utf-8" />
     <title>Groupie Tracker - Page de Groupe</title>
-    <link rel="stylesheet" href="static/grppage.css" />
+    <link rel="stylesheet" href="/static/grppage.css" />
   </head>
 <body>
     <h1>{{.Name}}</h1>
-    <form action="/src/struct.go" method="POST"></form>
-        <table id="table">
-            <tr>
-            <td>
-                <a class="a" href="{{.Image}}" target="_blank" rel="noopener">
+    <div id="group">
+        <div id="group-image">
+            <a class="a" href="{{.Image}}" target="_blank" rel="noopener">
                 <img src="{{.Image}}" alt="image non chargée de {{.Name}}">
-                </a>
-            </td>
-            <td>
-                <h2>Membres :</h2>
-                    <ul>
-                    {{range .Members}}
-                        <li>{{.}}</li>
-                    {{end}}
-                    </ul>
-                <h3>Année de formation :</h3>
-                    <p>{{.FormationYear}}</p>
-                <h4>Genre :</h4>
-                    <p>{{.Genre}}</p>
-                <h5>Albums :</h5>
-                    <ul>
-                    {{range .Albums}}
-                        <li>{{.}}</li>
-                    {{end}}
-                    </ul>
-            </td>
-            </tr>
-        </table>
-        <a href="/template/accueil.html" class="button">Retour à l'accueil</a>
-    </form>
+            </a>
+        </div>
+        <div id="group-info">
+            <h2>Membres</h2>
+            <ul>
+                {{range .Members}}
+                    <li>{{.}}</li>
+                {{end}}
+            </ul>
+
+            <p><strong>Année de formation :</strong> {{.CreationDate}}</p>
+            <p><strong>Premier album :</strong> {{.FirstAlbum}}</p>
+            <p><strong>Localisations :</strong> {{.Locations}}</p>
+            <p><strong>Dates de concerts :</strong> {{.ConcertDates}}</p>
+            <p><strong>Relations :</strong> {{.Relations}}</p>
+        </div>
+    </div>
+
+    <a href="/" class="button">Retour à l'accueil</a>
 </body>
 </html>

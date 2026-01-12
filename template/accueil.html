@@ -3,12 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <title>Groupie Tracker - Accueil</title>
-    <link rel="stylesheet" href="static/accueil.css" />
+    <link rel="stylesheet" href="/static/accueil.css" />
   </head>
   <body>
     <h1>Page d'accueil</h1>
     <h2>De quel groupe voulez vous avoir des information</h2>
-    <form action="/src/struct.go" method="POST"></form>
     <button class="button1">recherche</button>
       <table id="table">
         {{range $i, $g := .ListGroup}}
@@ -24,7 +23,7 @@
                   </a>
                 </tr>
                 <tr>
-                  <button class="button"> {{$g.Name}} </button>
+                  <a href="/group?id={{$g.Id}}" class="button">{{$g.Name}}</a>
                 </tr>
               </table>
             </td>
@@ -38,5 +37,5 @@
             </tr>
         {{end}}
       </table>
-    </form>
   </body>
+</html>

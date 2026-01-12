@@ -23,9 +23,11 @@ h2 {
   background-color: transparent;
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 #grp-table {
+  margin: 0 auto;
   border-collapse: collapse;
   border-spacing: 20;
   background-color: transparent;
@@ -71,6 +73,11 @@ h2 {
   font-size: 15px;
   cursor: pointer;
   text-align: center;
-  display: block;
   margin: 0 auto;
+  display: flex;                 
+  align-items: center;           
+  justify-content: center;       
+
+  margin: 0 auto;
+  text-decoration: none;
 }

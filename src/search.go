@@ -35,7 +35,10 @@ func ispart(groupname, txt string) bool {
 
 func ispartmembers(groupname []string, txt string) bool {
 	txt = lowcase(txt)
-	for m := 0; groupname[m] != ""; m++ {
+	if groupname == nil {
+		return false
+	}
+	for m := 0; m < len(groupname); m++ {
 		cmp := 0
 		members := lowcase(groupname[m])
 

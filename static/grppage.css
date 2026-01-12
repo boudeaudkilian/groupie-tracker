@@ -9,6 +9,9 @@ h1 {
   background-color: transparent;
   text-align: center;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
 }
 
 h2 {
@@ -16,6 +19,9 @@ h2 {
   background-color: transparent;
   text-align: center;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
 }
 
 h3 {
@@ -23,6 +29,9 @@ h3 {
   background-color: transparent;
   text-align: center;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
 }
 
 h4 {
@@ -30,6 +39,9 @@ h4 {
   background-color: transparent;
   text-align: center;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
 }
 
 h5 {
@@ -37,6 +49,9 @@ h5 {
   background-color: transparent;
   text-align: center;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
 }
 
 #table {
@@ -45,6 +60,8 @@ h5 {
   background-color: transparent;
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 120px;
 }
 
 .a {
@@ -53,18 +70,47 @@ h5 {
   cursor: pointer;
   text-align: center;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  margin: 24px auto;
+}
+
+a.button {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  width: 240px;
+  margin: 24px auto;
 }
 
 .button {
   background-color: rgb(112, 187, 241);
-  color: black;           
-  border: none;             
+  color: white;
+  border: none;
   width: 240px;
-  height: 120px;      
-  border-radius: 120px;        
+  height: 120px;
+  border-radius: 120px;
   font-size: 15px;
   cursor: pointer;
-  text-align: right;
+  text-align: center;
   display: flex;
-  justify-content: right;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  margin: 24px auto;
+  text-decoration: none;
+}
+
+li {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

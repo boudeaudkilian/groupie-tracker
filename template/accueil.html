@@ -8,22 +8,26 @@
   <body>
     <h1>Page d'accueil</h1>
     <h2>De quel groupe voulez vous avoir des information</h2>
-    <button class="button1">recherche</button>
-      <table id="table">
+    <a href="/search" class="button1">recherche</a>
+      <table id="main-table">
         {{range $i, $g := .ListGroup}}
             {{if eq (mod $i 5) 0}}
               <tr>
             {{end}}
 
             <td>
-              <table id="table">
+              <table class="grp-table">
                 <tr>
-                  <a class="a" href="{{$g.Image}}" target="_blank" rel="noopener">
-                    <img src="{{$g.Image}}" alt="image non chargée de {{$g.Name}}">
-                  </a>
+                  <td>
+                    <a class="a" href="{{$g.Image}}" target="_blank" rel="noopener">
+                      <img src="{{$g.Image}}" alt="image non chargée de {{$g.Name}}">
+                    </a>
+                  </td>
                 </tr>
                 <tr>
-                  <a href="/group?id={{$g.Id}}" class="button">{{$g.Name}}</a>
+                  <td>
+                    <a href="/group?id={{$g.Id}}" class="button2">{{$g.Name}}</a>
+                  </td>
                 </tr>
               </table>
             </td>

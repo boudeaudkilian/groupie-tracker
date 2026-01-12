@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: rgb(116, 197, 255);
+}
+
+h1 {
+  color: gold;
+  background-color: transparent;
+  text-align: center;
+  display: flex;
+}
+
+h2 {
+  color: gold;
+  background-color: transparent;
+  text-align: center;
+  display: flex;
+}
+
+h3 {
+  color: gold;
+  background-color: transparent;
+  text-align: center;
+  display: flex;
+}
+
+h4 {
+  color: gold;
+  background-color: transparent;
+  text-align: center;
+  display: flex;
+}
+
+h5 {
+  color: gold;
+  background-color: transparent;
+  text-align: center;
+  display: flex;
+}
+
+#table {
+  border-collapse: collapse;
+  border-spacing: 20;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+.a {
+  border: none;                     
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+}
+
+.button {
+  background-color: rgb(112, 187, 241);
+  color: black;           
+  border: none;             
+  width: 240px;
+  height: 120px;      
+  border-radius: 120px;        
+  font-size: 15px;
+  cursor: pointer;
+  text-align: right;
+  display: flex;
+  justify-content: right;
+}

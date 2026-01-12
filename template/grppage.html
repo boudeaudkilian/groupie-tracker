@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Groupie Tracker - Page de Groupe</title>
+    <link rel="stylesheet" href="/static/grppage.css" />
+  </head>
+<body>
+    <h1>{{.Name}}</h1>
+    <div id="group">
+        <div id="group-image">
+            <a class="a" href="{{.Image}}" target="_blank" rel="noopener">
+                <img src="{{.Image}}" alt="image non chargée de {{.Name}}">
+            </a>
+        </div>
+        <div id="group-info">
+            <h2>Membres</h2>
+            <ul>
+                {{range .Members}}
+                    <li>{{.}}</li>
+                {{end}}
+            </ul>
+
+            <p><strong>Année de formation :</strong> {{.CreationDate}}</p>
+            <p><strong>Premier album :</strong> {{.FirstAlbum}}</p>
+        </div>
+    </div>
+
+    <a href="/" class="button">Retour à l'accueil</a>
+</body>
+</html>

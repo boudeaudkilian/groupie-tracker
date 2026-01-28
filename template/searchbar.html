@@ -29,6 +29,9 @@
                         },
                         body: JSON.stringify({ input: value })
                     })
+                    .then(() => {
+                        window.location.href = "/";
+                    })
                     .then(res => res.json())
                     .then(data => {
                         document.getElementById("result").innerText = data.result;

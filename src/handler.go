@@ -89,5 +89,4 @@ func AnalyzeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	
 	fmt.Println(data.Input)
-	http.Redirect(w, r, "/", http.StatusSeeOther)
 }

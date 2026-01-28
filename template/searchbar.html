@@ -11,7 +11,30 @@
         <form>
             <div class="search">
                 <span class="search-icon material-symbols-outlined">search</span>
-                <input class="search-input" type="search" placeholder="Search">
+                <input class="search-input" type="search" id="search" placeholder="Search">
+                <script>
+                document.getElementById("search").addEventListener("keydown", function (e) {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        sendData();
+                    }
+                });
+                function sendData() {
+                    const value = document.getElementById("search").value;
+
+                    fetch("/analyze", {
+                        method: "POST",
+                        headers: {
+                        "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ input: value })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById("result").innerText = data.result;
+                    });
+                }
+                </script>
             </div>
         </form>
     </body>

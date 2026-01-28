@@ -1,11 +1,21 @@
 package groupie
 
 import (
+	"encoding/json"
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 	"strconv"
 )
+
+type RequestData struct {
+	Input string `json:"input"`
+}
+
+type ResponseData struct {
+	Result string `json:"result"`
+}
 
 func AccueilHandler(w http.ResponseWriter, r *http.Request) {
 	funcMap := template.FuncMap{
@@ -63,4 +73,21 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 	if err := tmpl.Execute(w, nil); err != nil {
 		log.Println("❌ Erreur template searchbar:", err)
 	}
+}
+
+func AnalyzeHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Méthode non autorisée", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var data RequestData
+	err := json.NewDecoder(r.Body).Decode(&data)
+	if err != nil {
+		http.Error(w, "Données invalides", http.StatusBadRequest)
+		return
+	}
+	
+	fmt.Println(data.Input)
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }

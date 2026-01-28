@@ -9,6 +9,8 @@ import (
 	"strconv"
 )
 
+var user_input = ""
+
 type RequestData struct {
 	Input string `json:"input"`
 }
@@ -32,6 +34,10 @@ func AccueilHandler(w http.ResponseWriter, r *http.Request) {
 	)
 
 	data := LoadGroupResum()
+
+	if user_input != "" {
+		data = Search(user_input, *data)
+	}
 	if err := tmpl.Execute(w, data); err != nil {
 		log.Println("❌ Erreur template:", err)
 	}
@@ -89,4 +95,5 @@ func AnalyzeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	
 	fmt.Println(data.Input)
+	user_input = data.Input
 }

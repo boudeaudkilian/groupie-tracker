@@ -22,20 +22,7 @@
                 function sendData() {
                     const value = document.getElementById("search").value;
 
-                    fetch("/analyze", {
-                        method: "POST",
-                        headers: {
-                        "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({ input: value })
-                    })
-                    .then(() => {
-                        window.location.href = "/";
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        document.getElementById("result").innerText = data.result;
-                    });
+                    window.location.href = "/?search=" + encodeURIComponent(value);
                 }
                 </script>
             </div>

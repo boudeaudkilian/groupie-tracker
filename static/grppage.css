@@ -26,36 +26,6 @@ h2 {
   font-size: 40px;
 }
 
-h3 {
-  color: gold;
-  background-color: transparent;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 120px;
-}
-
-h4 {
-  color: gold;
-  background-color: transparent;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 120px;
-}
-
-h5 {
-  color: gold;
-  background-color: transparent;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 120px;
-}
-
 #table {
   border-collapse: collapse;
   border-spacing: 20;
@@ -109,24 +79,7 @@ a.button {
   right: 24px;
   bottom: 24px;
   text-decoration: none;
-}
-
-li {
-  color: white;
-  font-size: 40px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-p {
-  color: white;
-  font-size: 30px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  
 }
 
 li {

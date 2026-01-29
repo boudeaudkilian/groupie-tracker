@@ -12,9 +12,9 @@ type Groupe struct {
 	Members      []string
 	CreationDate string
 	FirstAlbum   string
-	Locations    string
-	ConcertDates string
-	Relations    string
+	Locations    []string
+	ConcertDates []string
+	Relations    []string
 	Isload       int
 }
 
@@ -43,10 +43,22 @@ func Itoa(nb int) string {
 	}
 	return ret
 }
+func LoadUrl(url2, arg string) []string {
+	req, _ := http.NewRequest("GET", url2, nil)
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return nil
+	}
+	defer res.Body.Close()
+	body, _ := io.ReadAll(res.Body)
+	 	box := arg
+	return GetMultiToken(string(body), box)
+}
 
 func LoadGroup(ids int) *Groupe {
 	var Group1 Groupe
 	id := Itoa(ids)
+	urlbox := ""
 
 	req, _ := http.NewRequest("GET", url+"/"+id, nil)
 	res, err := http.DefaultClient.Do(req)
@@ -65,9 +77,12 @@ func LoadGroup(ids int) *Groupe {
 	Group1.Members = GetMultiToken(string(body), "members")
 	Group1.CreationDate = GetToken(string(body), "creationDate")
 	Group1.FirstAlbum = GetToken(string(body), "firstAlbum")
-	Group1.Locations = GetToken(string(body), "locations")
-	Group1.ConcertDates = GetToken(string(body), "concertDates")
-	Group1.Relations = GetToken(string(body), "relations")
+	urlbox = GetToken(string(body), "locations")
+	Group1.Locations = LoadUrl(urlbox, "locations")
+	//printtest(Group1.Locations)
+	urlbox = GetToken(string(body), "concertDates")
+	Group1.ConcertDates = LoadUrl(urlbox, "dates")
+	//printtest(Group1.ConcertDates)
 	Group1.Isload = 1
 	return &Group1
 }
@@ -113,6 +128,11 @@ func LoadAll() *Data {
 	return &data
 }
 
+// func printtest(txt []string) {
+// 	for i := 0; i < len(txt) ; i++ {
+// 		println(txt[i])
+// 	}
+// }
 // func PrintListName(data Data) {
 // 	for i := 0; i < data.NbGroup; i++ {
 // 		fmt.Println(data.ListGroup[i].Name)

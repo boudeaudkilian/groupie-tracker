@@ -43,7 +43,7 @@ func GetMultiToken(buffer, arg string) []string {
 			if v == ',' {
 				ret = append(ret, box)
 				box = ""
-			} else if v != '"' {
+			} else if v != '"' && v != '*'{
 				box += string(v)
 			}
 		} else if isgoodword == 2 && v == '[' {

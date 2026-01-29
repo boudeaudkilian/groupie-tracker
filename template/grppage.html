@@ -16,6 +16,9 @@
         <div id="group-info">
             <h2>Membres</h2>
             <ul>
+                {{if eq (len .Members) 0}}
+                    <li>{{.Name}}</li>
+                {{end}}
                 {{range .Members}}
                     <li>{{.}}</li>
                 {{end}}
@@ -23,6 +26,18 @@
 
             <p><strong>Année de formation :</strong> {{.CreationDate}}</p>
             <p><strong>Premier album :</strong> {{.FirstAlbum}}</p>
+            <p><strong>Location :</strong></p>
+            <ul>
+                {{range .Locations}}
+                    <li>{{.}}</li>
+                {{end}}
+            </ul>
+            <p><strong>Dates de concert :</strong></p>
+            <ul>
+                {{range .ConcertDates}}
+                    <li>{{.}}</li>
+                {{end}}
+            </ul>
         </div>
     </div>
 

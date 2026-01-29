@@ -79,10 +79,10 @@ func LoadGroup(ids int) *Groupe {
 	Group1.FirstAlbum = GetToken(string(body), "firstAlbum")
 	urlbox = GetToken(string(body), "locations")
 	Group1.Locations = LoadUrl(urlbox, "locations")
+	//printtest(Group1.Locations)
 	urlbox = GetToken(string(body), "concertDates")
-	Group1.ConcertDates = LoadUrl(urlbox, "concertDates")
-	urlbox = GetToken(string(body), "relations")
-	Group1.Relations = LoadUrl(urlbox, "relations")
+	Group1.ConcertDates = LoadUrl(urlbox, "dates")
+	//printtest(Group1.ConcertDates)
 	Group1.Isload = 1
 	return &Group1
 }
@@ -128,6 +128,11 @@ func LoadAll() *Data {
 	return &data
 }
 
+// func printtest(txt []string) {
+// 	for i := 0; i < len(txt) ; i++ {
+// 		println(txt[i])
+// 	}
+// }
 // func PrintListName(data Data) {
 // 	for i := 0; i < data.NbGroup; i++ {
 // 		fmt.Println(data.ListGroup[i].Name)

@@ -9,6 +9,19 @@
     <h1>Page d'accueil</h1>
     <h2>De quel groupe voulez vous avoir des information</h2>
     <a href="/search" class="button1">recherche</a>
+    <table class="sort-table">  
+      <tr>
+        <td>
+          <a href="#" class="button3" onclick="sortWithSearch('alpha'); return false;">Trier par ordre alphabétique</a>
+        </td>
+        <td>
+          <a href="#" class="button4" onclick="sortWithSearch('alpha-reverse'); return false;">Trier par ordre alphabétique inverse</a>
+        </td>
+        <td>
+          <a href="#" class="button5" onclick="sortWithSearch(''); return false;">Trier par ordre api</a>
+        </td>
+      </tr>
+    </table>
       <table id="main-table">
         {{range $i, $g := .ListGroup}}
             {{if eq (mod $i 5) 0}}
@@ -41,5 +54,28 @@
             </tr>
         {{end}}
       </table>
+    <script>
+      function sortWithSearch(sortType) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchParam = urlParams.get('search');
+        
+        let newUrl = '/';
+        const params = [];
+        
+        if (searchParam) {
+          params.push('search=' + encodeURIComponent(searchParam));
+        }
+        
+        if (sortType) {
+          params.push('sort=' + sortType);
+        }
+        
+        if (params.length > 0) {
+          newUrl += '?' + params.join('&');
+        }
+        
+        window.location.href = newUrl;
+      }
+    </script>
   </body>
 </html>

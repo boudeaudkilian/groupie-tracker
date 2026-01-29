@@ -9,8 +9,6 @@ import (
 	"strconv"
 )
 
-var user_input = ""
-
 type RequestData struct {
 	Input string `json:"input"`
 }
@@ -24,6 +22,33 @@ func AccueilHandler(w http.ResponseWriter, r *http.Request) {
 		"LoadGroup": LoadGroup,
 	}
 
+	sortParam := r.URL.Query().Get("sort")
+	searchParam := r.URL.Query().Get("search")
+
+	allData := LoadData()
+	listGroup := allData.ListGroup
+
+	if searchParam != "" {
+		searchResult := Search(searchParam, *allData)
+		if searchResult != nil && len(searchResult.ListGroup) > 0 {
+			listGroup = searchResult.ListGroup
+		} else {
+			listGroup = []Groupe{}
+			println("❌ Aucun résultat trouvé")
+		}
+	}
+
+	if len(listGroup) > 0 {
+		
+		switch sortParam {
+		case "alpha":
+			listGroup = Triealpha(listGroup, "name")
+		case "alpha-reverse":
+			listGroup = Triealpharivers(listGroup, "name")
+		default:
+		}
+	}
+
 	tmpl := template.Must(
 		template.New("accueil.html").Funcs(funcMap).
 			Funcs(template.FuncMap{
@@ -33,11 +58,14 @@ func AccueilHandler(w http.ResponseWriter, r *http.Request) {
 			ParseFiles("template/accueil.html"),
 	)
 
-	data := LoadGroupResum()
-
-	if user_input != "" {
-		data = Search(user_input, *data)
+	data := struct {
+		ListGroup   []Groupe
+		SearchQuery string
+	}{
+		ListGroup:   listGroup,
+		SearchQuery: searchParam,
 	}
+
 	if err := tmpl.Execute(w, data); err != nil {
 		log.Println("❌ Erreur template:", err)
 	}
@@ -94,6 +122,10 @@ func AnalyzeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	
-	fmt.Println(data.Input)
-	user_input = data.Input
+	fmt.Println("🔍 Recherche reçue:", data.Input)
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]string{
+		"redirect": "/?search=" + data.Input,
+	})
 }

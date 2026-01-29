@@ -55,14 +55,12 @@ func PageGroupHandler(w http.ResponseWriter, r *http.Request) {
 
 	idStr := r.URL.Query().Get("id")
 	id, err := strconv.Atoi(idStr)
-
 	if err != nil || id <= 0 {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
 
 	grp := LoadGroup(id)
-
 	if grp == nil {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
@@ -91,7 +89,6 @@ func AnalyzeHandler(w http.ResponseWriter, r *http.Request) {
 
 	var data RequestData
 	err := json.NewDecoder(r.Body).Decode(&data)
-	
 	if err != nil {
 		http.Error(w, "Données invalides", http.StatusBadRequest)
 		return

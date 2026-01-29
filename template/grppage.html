@@ -26,9 +26,18 @@
 
             <p><strong>Année de formation :</strong> {{.CreationDate}}</p>
             <p><strong>Premier album :</strong> {{.FirstAlbum}}</p>
-            <p><strong>Localisation :</strong> {{.location}}</p>
-            <p><strong>Dates de concert :</strong> {{.concertDates}}</p>
-            <p><strong>Relation :</strong> {{.relation}}</p>
+            <p><strong>Location :</strong></p>
+            <ul>
+                {{range .Locations}}
+                    <li>{{.}}</li>
+                {{end}}
+            </ul>
+            <p><strong>Dates de concert :</strong></p>
+            <ul>
+                {{range .ConcertDates}}
+                    <li>{{.}}</li>
+                {{end}}
+            </ul>
         </div>
     </div>
 

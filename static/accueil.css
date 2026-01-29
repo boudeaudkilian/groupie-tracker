@@ -44,24 +44,6 @@ h2 {
   text-align: center;
   display: flex;
 }
-.button2 {
-  display: inline-block;
-  padding: 8px 14px;
-  background-color: rgb(112, 187, 241);
-  color: black;           
-  border-radius: 6px;
-  margin-top: 5px;
-  text-align: center;
-}
-.button1:hover {
-  background-color: rgba(5, 243, 243, 0.621);
-  transform: scale(1.1);
-}
-
-.button2:hover {
-  background-color: rgba(5, 144, 243, 0.621);
-  transform: scale(1.1);
-}
 
 .button1{
   background-color: whitesmoke;
@@ -80,4 +62,24 @@ h2 {
 
   margin: 0 auto;
   text-decoration: none;
+}
+
+.button2 {
+  display: inline-block;
+  padding: 8px 14px;
+  background-color: rgb(112, 187, 241);
+  color: black;           
+  border-radius: 6px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.button1:hover {
+  background-color: rgba(5, 243, 243, 0.621);
+  transform: scale(1.1);
+}
+
+.button2:hover {
+  background-color: rgba(5, 144, 243, 0.621);
+  transform: scale(1.1);
 }

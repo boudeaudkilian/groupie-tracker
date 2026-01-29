@@ -34,13 +34,16 @@ func Itoa(nb int) string {
 
 	ret := ""
 	len := 1
+
 	for ; nb/len != 0; len *= 10 {
 	}
 	len /= 10
+
 	for ; len != 0; len /= 10 {
 		ret += string(rune((nb / len) + '0'))
 		nb = nb % len
 	}
+
 	return ret
 }
 
@@ -53,6 +56,7 @@ func LoadGroup(ids int) *Groupe {
 	if err != nil {
 		return nil
 	}
+
 	defer res.Body.Close()
 	body, _ := io.ReadAll(res.Body)
 
@@ -60,6 +64,7 @@ func LoadGroup(ids int) *Groupe {
 	if Group1.Id != id {
 		return nil
 	}
+
 	Group1.Image = GetToken(string(body), "image")
 	Group1.Name = GetToken(string(body), "name")
 	Group1.Members = GetMultiToken(string(body), "members")
@@ -84,17 +89,20 @@ func LoadGroupResum() *Data {
 		if err != nil {
 			return nil
 		}
+
 		defer res.Body.Close()
 		body, _ := io.ReadAll(res.Body)
 		group.Id = GetToken(string(body), "id")
 		if group.Id != id {
 			break
 		}
+
 		group.Image = GetToken(string(body), "image")
 		group.Name = GetToken(string(body), "name")
 		data.ListGroup = append(data.ListGroup, group)
 		data.NbGroup++
 	}
+
 	return &data
 }
 
@@ -107,21 +115,9 @@ func LoadAll() *Data {
 		if groupe == nil {
 			break
 		}
+
 		data.ListGroup = append(data.ListGroup, *groupe)
 		data.NbGroup++
 	}
 	return &data
 }
-
-// func PrintListName(data Data) {
-// 	for i := 0; i < data.NbGroup; i++ {
-// 		fmt.Println(data.ListGroup[i].Name)
-// 	}
-// 	fmt.Printf("\n")
-// }
-// func Maintest() {
-// 	data := LoadGroupResum()
-
-// 	println(data.nbGroup)
-// 	println(data.listGroup[4].name)
-// }
